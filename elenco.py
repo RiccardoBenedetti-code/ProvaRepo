@@ -1,9 +1,13 @@
 import os
+import sys
 
 path_EEG = 'D:\\Child Mind\\Release1_1\\EEG\\Set_1'
-path_MRI = 'D:\\Child Mind\\release1_1\\MRI\\Set_1'
+path_MRI_R = 'D:\\Child Mind\\Release1_1\\MRI\\Set_1\\Rutgers'
+path_MRI_SI = 'D:\\Child Mind\\Release1_1\\MRI\\Set_1\\Staten_Island'
 EEG_list = os.listdir(path_EEG)
-MRI_list = os.listdir(path_MRI)
+MRI_list_R = os.listdir(path_MRI_R)
+MRI_list_SI = os.listdir(path_MRI_SI)
+MRI_list = MRI_list_SI + MRI_list_R
 EEG_l = len(EEG_list)
 MRI_l = len(MRI_list)
 
@@ -23,7 +27,10 @@ for i in range(EEG_l):
         if EEG_list[i] == MRI_list[k]:
             f.write(EEG_list[i])
             f.write("\n")
-            print(EEG_list[i])
+            #print(EEG_list[i])
             EEG_MRI_match.insert(s,EEG_list[i])
-            s = s+1
+            s = s + 1
+print(EEG_MRI_match)
 f.close()
+
+sys.stdout.write("Totale di match: %d \n" % len(EEG_MRI_match))
